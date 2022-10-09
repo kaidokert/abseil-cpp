@@ -1,2 +1,11 @@
-static_library("absl") {}
+static_library("absl") {
+  if (!defined(public_configs)) {
+    public_configs = []
+  }
 
+  public_configs += [ "//third_party/abseil-cpp:absl_include_config" ]
+}
+
+config("absl_include_config") {
+  include_dirs = [ "." ]
+}
